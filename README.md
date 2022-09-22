@@ -3,7 +3,7 @@ Compiling materials here for how to use the Bayesian Multilevel Modeling functio
 
 ## Configuring your environment for using these tools
 
-1) Add the following lines to to your .cshrc.mine files so that these environmental variables are set every time you log on to neuron: 
+1 - Add the following lines to to your .cshrc.mine files so that these environmental variables are set every time you log on to neuron: 
 
 ```
 setenv PATH /software/neuron/afni/v21.2.04/abin:$PATH
@@ -17,7 +17,7 @@ The first line is so you are using the right version of AFNI., and the only reas
 The last 2 lines are a bit more technical: the major dependency issue is that the gcc compiler on neuron is too old, and I'd installed a new one that went to /usr/local/bin, but when I log off and on again, it goes back to the old one. So it is necessary to change the environment to find the new one before launching the program (ie., setenv PATH /usr/local/bin:$PATH). However, now that it is searching in /usr/local/bin first, it gets the wrong version of R (version 3.5.* is in /usr/local/bin), so the second line directs it to find R in the right place before R calls on gcc compiler (this is a very hacky workaround). All the required packages for the Bayesian function have been installed/updated for R 3.6.3, and are not compatible with 3.5
 
 
-2) You might need to edit the Makevars file for R so it finds the right C++. To read your Makevars file, use the following command: 
+2 - You might need to edit the Makevars file for R so it finds the right C++. To read your Makevars file, use the following command: 
 
 ```
 more ~/.R/Makevars
@@ -46,7 +46,7 @@ b) When attempting to make the Makevars file using the steps above, you might ge
 This happens because your home directory has very limited storage space available, so it fills up quickly. You’ll need to figure out if you have some large files that you can delete to clear up space to create the Makevars file. It is a tiny file, so you won’t need to clear up much space!
 
 
-3) When connecting to neuron, be sure to use the -Y option. This enables the use of graphic libraries typically used by GUIs and graphics softwares. Even though the bayesian programs are not going to launch a graphic, it still needs to use the graphics libraries to generate the plots. For example: 
+3 - When connecting to neuron, be sure to use the -Y option. This enables the use of graphic libraries typically used by GUIs and graphics softwares. Even though the bayesian programs are not going to launch a graphic, it still needs to use the graphics libraries to generate the plots. For example: 
  ```
  ssh -Y diana@neuron.umd.edu
  ```
